@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<portable-config>
+	<config-file path="WEB-INF/classes/application.properties">
+		<replace key="env.flag">online</replace>
+		<!-- Redis Cluster Settings -->
+		<replace key="redis.nodes">172.17.9.15:7000,172.17.9.16:7000,172.17.9.17:7000</replace>
+		<replace key="redis.connectionTimeout">5000</replace>
+		<replace key="redis.soTimeout">3000</replace>
+		<replace key="redis.maxRedirections">5</replace>
+		<replace key="redis.keyprefix">online</replace>
+		
+		<replace key="token_able_hour">24</replace>
+		<replace key="spring.datasource.primary.driver-class-name">com.mysql.jdbc.Driver</replace>
+		<replace key="spring.datasource.primary.url">jdbc:mysql://172.17.9.15:3306/redeemapi?useUnicode=true&amp;autoReconnect=true&amp;noAccessToProcedureBodies=true&amp;characterEncoding=UTF-8</replace>
+		<replace key="spring.datasource.primary.username">redeemapi</replace>
+		<replace key="spring.datasource.primary.password">redeemapi123</replace>
+		<replace key="spring.datasource.secondary.driver-class-name">com.mysql.jdbc.Driver</replace>
+		<replace key="spring.datasource.secondary.url">jdbc:mysql://172.17.9.12:3306/coffee_bean?useUnicode=true&amp;autoReconnect=true&amp;noAccessToProcedureBodies=true&amp;characterEncoding=UTF-8</replace>
+		<replace key="spring.datasource.secondary.username">coffeebean</replace>
+		<replace key="spring.datasource.secondary.password">.#cfBen1</replace>
+	
+	</config-file>
+
+</portable-config>
