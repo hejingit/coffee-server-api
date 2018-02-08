@@ -43,5 +43,8 @@ public interface  ExampleMapper {
 
 	@Delete("DELETE from api_example where id = #{id} ")
 	public int delete(Integer id);
+	
+	@Select("Select count(*) from api_example")
+	public int countExample();
 }
 

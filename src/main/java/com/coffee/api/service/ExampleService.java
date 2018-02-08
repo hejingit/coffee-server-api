@@ -26,6 +26,10 @@ public interface ExampleService {
 	Example getExampleById(Integer id);
 
 	public List<Example> getExampleList();
+	
+	public List<Example> getExampleListOther();
+	
+	public List<Example> getExampleListByPage(int currentPage,int pageSize);
 
 	public int add(Example example);
 

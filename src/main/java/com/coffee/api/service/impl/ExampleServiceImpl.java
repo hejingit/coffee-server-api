@@ -16,7 +16,11 @@ import org.springframework.stereotype.Service;
 
 import com.coffee.api.entity.Example;
 import com.coffee.api.mapper.ExampleMapper;
+import com.coffee.api.othermapper.OtherExampleMapper;
 import com.coffee.api.service.ExampleService;
+import com.coffee.api.util.PageBean;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
 
 /**
  * ClassName:ExampleServiceImpl <br/>
@@ -31,6 +35,9 @@ public class ExampleServiceImpl implements ExampleService {
 	
 	@Autowired
 	private ExampleMapper exampleMapper;
+	
+	@Autowired
+	private OtherExampleMapper otherExampleMapper;
 
 	@Override
 	public Example getExampleById(Integer id) {
@@ -55,6 +62,25 @@ public class ExampleServiceImpl implements ExampleService {
 	@Override
 	public int delete(Integer id) {
 		return exampleMapper.delete(id);
+	}
+
+	@Override
+	public List<Example> getExampleListByPage(int currentPage,int pageSize) {
+		
+		//设置分页信息，分别是当前页数和每页显示的总记录数【记住：必须在mapper接口中的方法执行之前设置该分页信息】
+        PageHelper.startPage(currentPage, pageSize);
+        List<Example> allExamples = exampleMapper.getExampleList();;        //全部商品
+//        int countNums = exampleMapper.countExample();            //总记录数
+        return allExamples;
+        
+        
+	}
+
+	@Override
+	public List<Example> getExampleListOther() {
+		
+		// TODO Auto-generated method stub
+		return otherExampleMapper.getExampleList();
 	}
 }
 
