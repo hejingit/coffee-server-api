@@ -11,6 +11,7 @@ package com.coffee.api.web;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -42,8 +43,14 @@ import springfox.documentation.annotations.ApiIgnore;
 @RestController
 @RequestMapping("/api")
 public class ExampleController {
+	
+	private static final Logger log = Logger.getLogger(ExampleController.class);
+	
+	
 	@Autowired
 	private ExampleService exampleService;
+	
+	
 
 	/**
 	 * 根据ID查询信息
@@ -57,6 +64,7 @@ public class ExampleController {
 	public ResponseEntity<JsonResult> getExampleById(@PathVariable(value = "id") Integer id) {
 		JsonResult r = new JsonResult();
 		try {
+			log.debug("根据url的id来获取详细信息ID"+id);
 			Example example = exampleService.getExampleById(id);
 			r.setResult(example);
 			r.setStatus("ok");
